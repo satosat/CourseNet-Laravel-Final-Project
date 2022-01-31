@@ -17,9 +17,9 @@ class TransactionSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 60; $i++) {
             Transaction::create([
-                'user_id' => $faker->numberBetween(1, 10),
+                'user_id' => $faker->numberBetween(1, 60),
             ]);
         }
     }

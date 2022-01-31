@@ -18,7 +18,7 @@ class BookDetailSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 60; $i++) {
             BookDetail::create([
                 'book_id' => $i + 1,
                 'genre' => $faker->word(),

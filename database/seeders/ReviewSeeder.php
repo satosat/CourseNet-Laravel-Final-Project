@@ -17,10 +17,10 @@ class ReviewSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i=0; $i < 150; $i++) {
+        for ($i=0; $i < 180; $i++) {
             Review::create([
-                'user_id' => $faker->numberBetween(1, 10),
-                'book_id' => $i % 50 + 1, // 3 reviews for each book
+                'user_id' => $faker->numberBetween(1, 60),
+                'book_id' => $i % 60 + 1, // 3 reviews for each book
                 'rating' => $faker->numberBetween(1, 10),
                 'comment' => $faker->sentence(15),
             ]);

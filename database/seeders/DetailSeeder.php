@@ -18,10 +18,10 @@ class DetailSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 60; $i++) {
             Detail::create([
                 'transaction_id' => $i + 1,
-                'book_id' => $faker->numberBetween(1, 10),
+                'book_id' => $faker->numberBetween(1, 60),
                 'transaction_type' => $faker->numberBetween(0, 1),
                 'book_amount' => $faker->numberBetween(1, 5),
             ]);

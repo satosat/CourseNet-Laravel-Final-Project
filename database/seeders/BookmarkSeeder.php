@@ -17,11 +17,11 @@ class BookmarkSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        for($i = 0; $i < 50; $i++) {
+        for($i = 0; $i < 60; $i++) {
             for ($j=0; $j < $faker->numberBetween(5, 20); $j++) {
                 Bookmark::create([
                     'user_id' => $i + 1,
-                    'book_id' => $faker->numberBetween(1, 10),
+                    'book_id' => $faker->numberBetween(1, 60),
                 ]);
             }
         }
