@@ -24,6 +24,14 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
+                <li>
+                    <div class="container-fluid">
+                        <form method="GET" class="d-flex" action="/book">
+                            <input class="form-control me-2" type="search" placeholder="Search Books" aria-label="Search" name="search" value="{{ request('search') }}">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 @if(Auth::user())

@@ -38,4 +38,13 @@ class Book extends Model
     {
         return $this->hasOne(BookDetail::class);
     }
+
+    public function scopeTitle($q)
+    {
+        return $q->join('reviews', 'books.id', '=', 'reviews.book_id')
+                ->selectRaw('id, title, AVG(rating) AS rating, COUNT(*) AS count')
+                ->groupBy('book_id')
+                ->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('author', 'like', '%' . request('search') . '%' );
+    }
 }

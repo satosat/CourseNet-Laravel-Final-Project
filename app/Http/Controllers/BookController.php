@@ -9,7 +9,17 @@ class BookController extends Controller
 {
     public function index()
     {
-        return 'Hello';
+        if(request('search')) {
+            $books = Book::title()->paginate(15);
+
+            return view('home.index', [
+                'title' => 'Books - readme',
+                'books' => $books,
+            ]);
+        }
+        else {
+            return redirect('/home');
+        }
     }
 
     public function create()
@@ -30,6 +40,11 @@ class BookController extends Controller
             'title' => sprintf('%s - readme', $book->title),
             'book' => $book,
         ]);
+    }
+
+    public function search()
+    {
+        dd(request('search'));
     }
 
 
