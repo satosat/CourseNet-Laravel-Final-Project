@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bookmark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BookmarkController extends Controller
 {
@@ -51,7 +52,7 @@ class BookmarkController extends Controller
     {
         // Show books in bookmark
 
-        $bookmarks = Bookmark::where('user_id', Auth::user()->id)->get();
+        $bookmarks = Bookmark::where('user_id', Auth::id())->get();
 
         return view('bookmark.show', [
             'title' => 'Bookmark',
