@@ -27,11 +27,22 @@ class BookmarkController extends Controller
     public function store(Request $request)
     {
         // Adds to user's bookmark
+        $row = Bookmark::where([
+                    ['user_id', '=', Auth::id()],
+                    ['book_id', '=', $request->book_id],
+                ]);
 
-        Bookmark::create([
-            'user_id' => Auth::id(),
-            'book_id' => $request->book_id,
-        ]);
+        if(count($row->get()))
+        {
+            $row->delete();
+        }
+        else
+        {
+            Bookmark::create([
+                'user_id' => Auth::id(),
+                'book_id' => $request->book_id,
+            ]);
+        }
 
         return response()->noContent();
     }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Bookmark;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -39,10 +41,22 @@ class BookController extends Controller
 
         $reviews = Review::where('book_id', '=', $id)->get();
 
+        $bookmark = Bookmark::where([
+                        ['user_id', '=', Auth::id()],
+                        ['book_id', '=', $id],
+                    ])->get();
+
+        $text = "Add to Bookmark";
+
+        if(count($bookmark)) {
+            $text = "Remove from Bookmark";
+        }
+
         return view('book.show', [
             'title' => sprintf('%s - readme', $book->title),
             'book' => $book,
             'reviews' => $reviews,
+            'text' => $text,
         ]);
     }
 
