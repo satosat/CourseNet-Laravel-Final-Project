@@ -3,13 +3,10 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('layout.master', [
-        'title' => 'Home'
-    ]);
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,5 +19,7 @@ Route::post('/bookmark/store', [BookmarkController::class, 'store']);
 
 Route::get('/book', [BookController::class, 'index']);
 Route::get('/book/{id}', [BookController::class, 'show']);
+
+Route::post('/review/store', [ReviewController::class, 'store']);
 
 require __DIR__.'/auth.php';

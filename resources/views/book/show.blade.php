@@ -24,6 +24,28 @@
         @endforeach
     </ul>
 
+    <h2 class="display-6">Leave A Review</h2>
+    <form action="/review/store" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+        <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea name="comment" id="comment" class="form-control">{{ old('comment') }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Rating</label>
+            <div style="display: flex; justify-content: space-around;" class="p-2">
+                @for ($i = 1; $i < 11; $i++)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="rating" id="inlineRadio{{ $i }}" value="{{ $i }}">
+                        <label class="form-check-label" for="inlineRadio{{ $i }}">{{ $i }}</label>
+                    </div>
+                @endfor
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary justify-content-end" value="Submit Review">
+    </form>
+
     <script>
         // Change submitBtn value when clicked
         document.addEventListener('DOMContentLoaded', () => {

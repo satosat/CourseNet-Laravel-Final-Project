@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    // Use Middleware(s)
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $books = DB::table('books')

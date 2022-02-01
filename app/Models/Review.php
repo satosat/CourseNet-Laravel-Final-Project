@@ -14,7 +14,8 @@ class Review extends Model
     protected $fillable = [
         'user_id',
         'book_id',
-        'rating'
+        'rating',
+        'comment',
     ];
 
     // Define Many-to-One relationship with users and books table
