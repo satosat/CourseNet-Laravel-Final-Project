@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -36,9 +37,12 @@ class BookController extends Controller
     {
         $book = Book::find($id);
 
+        $reviews = Review::where('book_id', '=', $id)->get();
+
         return view('book.show', [
             'title' => sprintf('%s - readme', $book->title),
             'book' => $book,
+            'reviews' => $reviews,
         ]);
     }
 

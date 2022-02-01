@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $books = DB::table('books')
                     ->join('reviews', 'books.id', '=', 'reviews.book_id')
-                    ->selectRaw('id, title, AVG(rating) AS rating, COUNT(*) AS count')
+                    ->selectRaw('id, title, author, AVG(rating) AS rating, COUNT(*) AS count')
                     ->groupBy('book_id')
                     ->paginate(15);
 

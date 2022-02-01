@@ -11,6 +11,12 @@ class Review extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'user_id',
+        'book_id',
+        'rating'
+    ];
+
     // Define Many-to-One relationship with users and books table
     public function user()
     {

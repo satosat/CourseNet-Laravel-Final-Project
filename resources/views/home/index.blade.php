@@ -15,6 +15,7 @@
                     <div class="p-3 border bg-light card">
                         <a href="/book/{{ $book->id }}">
                             {{ $book->title }} <br>
+                            {{ $book->author }} <br>
                             Rating: {{ number_format($book->rating, 1) }} <br>
                             {{ $book->count }} reviews
                         </a>
