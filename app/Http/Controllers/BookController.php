@@ -46,11 +46,7 @@ class BookController extends Controller
                         ['book_id', '=', $id],
                     ])->get();
 
-        $text = "Add to Bookmark";
-
-        if(count($bookmark)) {
-            $text = "Remove from Bookmark";
-        }
+        $text = count($bookmark) ? "Add to Bookmark" : "Remove from Bookmark";
 
         return view('book.show', [
             'title' => sprintf('%s - readme', $book->title),
