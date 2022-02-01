@@ -26,12 +26,20 @@ class BookmarkController extends Controller
 
     public function store(Request $request)
     {
-        //
+        // Adds to user's bookmark
+
+        Bookmark::create([
+            'user_id' => Auth::id(),
+            'book_id' => $request->book_id,
+        ]);
+
+        return response()->noContent();
     }
 
-    // Show books in bookmark
     public function show()
     {
+        // Show books in bookmark
+
         $bookmarks = Bookmark::where('user_id', Auth::user()->id)->get();
 
         return view('bookmark.show', [

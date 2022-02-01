@@ -7,8 +7,10 @@
 
     <h2 class="display-6">Reviews by readme users</h2>
 
-    <form action="/bookmark" method="POST">
-        <button type="submit" class="btn btn-light">Add to Bookmark</button>
+    <form action="/bookmark/store" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $book->id }}">
+        <input type="submit" class="btn btn-primary" value="Add to Bookmark">
     </form>
 
     <ul>

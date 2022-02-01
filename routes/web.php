@@ -18,7 +18,7 @@ Route::get('/dashboard', function () {
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/bookmark', [BookmarkController::class, 'show']);
-Route::post('/bookmark', [BookmarkController::class, 'store']);
+Route::post('/bookmark/store', [BookmarkController::class, 'store']);
 
 Route::get('/book', [BookController::class, 'index']);
 Route::get('/book/{id}', [BookController::class, 'show']);
