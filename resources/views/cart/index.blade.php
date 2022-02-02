@@ -18,8 +18,16 @@
                     </a>
                 </div>
                 <div class="d-flex justify-content-evenly">
-                    <button class="btn btn-primary">Rent Book</button>
-                    <button class="btn btn-success">Buy Book</button>
+                    @if ($cart->book->bookdetails->rent_stock)
+                        <button class="btn btn-primary">Rent Book</button>
+                    @else
+                        <button class="btn btn-primary" disabled>Rent stock not available</button>
+                    @endif
+                    @if ($cart->book->bookdetails->buy_stock)
+                        <button class="btn btn-success">Buy Book</button>
+                    @else
+                        <button class="btn btn-success" disabled>Buy stock not available</button>
+                    @endif
                 </div>
             </div>
         </div>

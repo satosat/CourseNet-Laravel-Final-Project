@@ -28,6 +28,10 @@ class BookmarkController extends Controller
     public function store(Request $request)
     {
         // Adds to user's bookmark
+        $request->validate([
+            'book_id' => 'required'
+        ]);
+
         $row = Bookmark::where([
                     ['user_id', '=', Auth::id()],
                     ['book_id', '=', $request->book_id],
