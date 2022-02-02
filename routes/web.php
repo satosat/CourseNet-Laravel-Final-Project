@@ -13,8 +13,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/home', [HomeController::class, 'index']);
-
 Route::get('/bookmark', [BookmarkController::class, 'show']);
 Route::post('/bookmark/store', [BookmarkController::class, 'store']);
 
