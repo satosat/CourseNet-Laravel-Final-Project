@@ -17,6 +17,7 @@
         @foreach ($reviews as $review)
             <li class="row border-bottom p-3">
                 "{{ $review->comment }}" <br>
+                {{ $review->rating }}/10 <br>
                 <small class="text-muted">
                     {{ $review->user->name }}, {{ date_format($review->created_at, "d-m-Y") }}
                 </small>
