@@ -24,6 +24,9 @@
                         <a class="nav-link" href="/bookmark">Bookmark</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}" id="logout-form">
                             @csrf
                             <a class="nav-link" id="logout-text">Log Out</a>
