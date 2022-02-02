@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li>
                     <div class="container-fluid">
