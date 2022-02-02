@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Bookmark;
+use App\Models\Cart;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,13 +49,19 @@ class BookController extends Controller
 
         $submitBtnText = count($bookmark) ? "Remove from Bookmark" : "Add to Bookmark";
 
-        // $cartBtnText =
+        $cart = Cart::where([
+                        ['user_id', '=', Auth::id()],
+                        ['book_id', '=', $id],
+        ])->get();
+
+        $cartBtnText = count($cart) ? "Remove from Cart" : "Add to Cart";
 
         return view('book.show', [
             'title' => sprintf('%s - readme', $book->title),
             'book' => $book,
             'reviews' => $reviews,
             'submitBtnText' => $submitBtnText,
+            'cartBtnText' => $cartBtnText,
         ]);
     }
 
