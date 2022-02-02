@@ -46,13 +46,15 @@ class BookController extends Controller
                         ['book_id', '=', $id],
                     ])->get();
 
-        $text = count($bookmark) ? "Remove from Bookmark" : "Add to Bookmark";
+        $submitBtnText = count($bookmark) ? "Remove from Bookmark" : "Add to Bookmark";
+
+        // $cartBtnText =
 
         return view('book.show', [
             'title' => sprintf('%s - readme', $book->title),
             'book' => $book,
             'reviews' => $reviews,
-            'text' => $text,
+            'submitBtnText' => $submitBtnText,
         ]);
     }
 
