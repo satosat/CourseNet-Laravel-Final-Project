@@ -18,7 +18,7 @@
             <li class="row border-bottom p-3">
                 "{{ $review->comment }}" <br>
                 {{ $review->rating }}/10 <br>
-                <small class="text-muted">
+                <small class="text-muted" style="padding-left: 0">
                     {{ $review->user->name }}, {{ date_format($review->created_at, "d-m-Y") }}
                 </small>
             </li>
