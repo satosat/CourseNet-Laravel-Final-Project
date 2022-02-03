@@ -10,20 +10,19 @@
                     {{ $book->author }} <br>
                 </a>
                 Length: {{ $book->bookdetails->page_length }} <br>
-                Rent Price: Rp.{{ number_format($book->bookdetails->rent_price) }} <br>
-                Return Date: {{ date("d F Y", strtotime("+7 day")) }}
+                Buy Price: Rp.{{ number_format($book->bookdetails->buy_price) }} <br>
             </div>
             <div class="d-flex justify-content-evenly">
                 <form action="/cart" method="GET">
                     <button class="btn btn-danger">Cancel</button>
                 </form>
-                <form action="/rent/store" method="POST">
+                <form action="/buy/store" method="POST">
                     @csrf
                     <input type="hidden" name="book_id" value="{{ $book->id }}">
-                    @if ($book->bookdetails->rent_stock)
-                        <button type="submit" class="btn btn-success">Rent Book</button>
+                    @if ($book->bookdetails->buy_stock)
+                        <button type="submit" class="btn btn-success">Buy Book</button>
                     @else
-                        <button type="submit" class="btn btn-success" disabled>Rent stock not available</button>
+                        <button type="submit" class="btn btn-success" disabled>Buy stock not available</button>
                     @endif
                 </form>
             </div>

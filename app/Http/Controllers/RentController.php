@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\BookDetail;
+use App\Models\Cart;
 use App\Models\Detail;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -15,6 +16,13 @@ class RentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        return view('rent.success', [
+            'title' => 'readme'
+        ]);
     }
 
     public function store(Request $request)
@@ -41,7 +49,12 @@ class RentController extends Controller
                 'rent_stock' => $book->rent_stock - 1,
             ]);
 
-        return response()->noContent();
+        Cart::where([
+            ['book_id', '=', $request->book_id],
+            ['user_id', '=' , Auth::id()],
+        ])->delete();
+
+        return redirect('/rent/success');
     }
 
     public function show(Request $request)
@@ -50,7 +63,7 @@ class RentController extends Controller
             'book_id' => 'required'
         ]);
 
-        $book = Book::where('id', $request->book_id)->first();
+        $book = Book::find($request->book_id);
 
         return view('rent.show', [
             'title' => sprintf("Rent %s - readme", $book->title),

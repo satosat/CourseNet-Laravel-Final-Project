@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BuyController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RentController;
@@ -27,8 +28,10 @@ Route::post('/cart/store', [CartController::class, 'store']);
 
 Route::post('/rent/store', [RentController::class, 'store']);
 Route::get('/rent/show', [RentController::class, 'show']);
+Route::get('/rent/success', [RentController::class, 'index']);
 
 Route::post('/buy/store', [BuyController::class, 'store']);
 Route::get('/buy/show', [BuyController::class, 'show']);
+Route::get('/buy/success', [BuyController::class, 'index']);
 
 require __DIR__.'/auth.php';
