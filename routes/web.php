@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\BookUserController;
 use App\Http\Controllers\BuyController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -33,5 +34,7 @@ Route::get('/rent/success', [RentController::class, 'index']);
 Route::post('/buy/store', [BuyController::class, 'store']);
 Route::get('/buy/show', [BuyController::class, 'show']);
 Route::get('/buy/success', [BuyController::class, 'index']);
+
+Route::get('/history', [BookUserController::class, 'index']);
 
 require __DIR__.'/auth.php';
