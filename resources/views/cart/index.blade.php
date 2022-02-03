@@ -14,34 +14,33 @@
                 <div class="p-3 border bg-light card">
                     <a href="/book/{{ $cart->book_id }}">
                         {{ $cart->book->title }} <br>
-                        {{ $cart->book->author }}
+                        {{ $cart->book->author }} <br>
                     </a>
                 </div>
                 <div class="d-flex justify-content-evenly">
-                    @if ($cart->book->bookdetails->rent_stock)
-                        <button class="btn btn-primary" id="rentBtn">Rent Book</button>
-                    @else
-                        <button class="btn btn-primary" disabled>Rent stock not available</button>
-                    @endif
-                    @if ($cart->book->bookdetails->buy_stock)
-                        <button class="btn btn-success" id="buyBtn">Buy Book</button>
-                    @else
-                        <button class="btn btn-success" disabled>Buy stock not available</button>
-                    @endif
+                    <form action="/rent/show" method="POST">
+                        @csrf
+                        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
+                        @if ($cart->book->bookdetails->rent_stock)
+                            <button type="submit" class="btn btn-primary" id="rentBtn">Rent Book</button>
+                        @else
+                            <button type="submit" class="btn btn-primary" disabled>Rent stock not available</button>
+                        @endif
+                    </form>
+                    <form action="/buy/show" method="POST">
+                        @csrf
+                        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
+                        @if ($cart->book->bookdetails->buy_stock)
+                            <button type="submit" class="btn btn-success" id="buyBtn">Buy Book</button>
+                        @else
+                            <button type="submit" class="btn btn-success" disabled>Buy stock not available</button>
+                        @endif
+                    </form>
                 </div>
             </div>
         </div>
     @endforeach
 
-    <form action="/rent/show" id="rentForm" method="POST">
-        @csrf
-        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
-    </form>
-
-    <form action="/buy/show" id="buyForm" method="POST">
-        @csrf
-        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
-    </form>
 
     <style>
         .card {
@@ -61,26 +60,5 @@
             text-decoration: underline;
         }
     </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const rentBtn = document.getElementById('rentBtn')
-            const buyBtn = document.getElementById('buyBtn')
-
-            const rentForm = document.getElementById('rentForm')
-            const buyForm = document.getElementById('buyForm')
-
-            // Submit rent form on click
-            rentBtn.addEventListener('click', () => {
-                console.log('click')
-                rentForm.submit()
-            })
-
-            // Submit buy form on click
-            buyBtn.addEventListener('click', () => {
-                buyForm.submit
-            })
-        })
-    </script>
 
 @endsection

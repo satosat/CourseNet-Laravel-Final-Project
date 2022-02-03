@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\BookDetail;
 use App\Models\Detail;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -32,11 +34,24 @@ class RentController extends Controller
             'book_amount' => 1
         ]);
 
+        $book = BookDetail::where('book_id', '=', $request->book_id)->first();
+
+        BookDetail::where('book_id', '=', $request->book_id)
+            ->update([
+                'rent_stock' => $book->rent_stock - 1,
+            ]);
+
         return response()->noContent();
     }
 
     public function show(Request $request)
     {
+        $request->validate([
+            'book_id' => 'required'
+        ]);
+
+        $book = Book::find('id', $request->book_id);
+
 
     }
 }
