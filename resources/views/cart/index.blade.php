@@ -19,7 +19,6 @@
                 </div>
                 <div class="d-flex justify-content-evenly">
                     <form action="/rent/show" method="GET">
-                        @csrf
                         <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
                         @if ($cart->book->bookdetails->rent_stock)
                             <button type="submit" class="btn btn-primary" id="rentBtn">Rent Book</button>
@@ -28,7 +27,6 @@
                         @endif
                     </form>
                     <form action="/buy/show" method="GET">
-                        @csrf
                         <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
                         @if ($cart->book->bookdetails->buy_stock)
                             <button type="submit" class="btn btn-success" id="buyBtn">Buy Book</button>
