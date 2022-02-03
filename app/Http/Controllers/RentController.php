@@ -50,8 +50,11 @@ class RentController extends Controller
             'book_id' => 'required'
         ]);
 
-        $book = Book::find('id', $request->book_id);
+        $book = Book::where('id', $request->book_id)->first();
 
-
+        return view('rent.show', [
+            'title' => sprintf("Rent %s - readme", $book->title),
+            'book' => $book,
+        ]);
     }
 }
