@@ -13,7 +13,7 @@ class Detail extends Model
         'transaction_id',
         'book_id',
         'transaction_type',
-        'total',
+        'book_amount',
     ];
 
     // Define Many-to-One relationship with transactions and books table

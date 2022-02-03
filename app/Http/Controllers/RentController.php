@@ -26,10 +26,13 @@ class RentController extends Controller
         ]);
 
         Detail::create([
-            'transaction_id' => $transaction,
+            'transaction_id' => $transaction->id,
             'book_id' => $request->book_id,
             'transaction_type' => 0,
+            'book_amount' => 1
         ]);
+
+        return response()->noContent();
     }
 
     public function show(Request $request)

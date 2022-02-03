@@ -26,5 +26,9 @@ Route::get('/cart', [CartController::class, 'index']);
 Route::post('/cart/store', [CartController::class, 'store']);
 
 Route::post('/rent/store', [RentController::class, 'store']);
+Route::post('/rent/show', [RentController::class, 'show']);
+
+Route::post('/buy/store', [BuyController::class, 'store']);
+Route::post('/buy/show', [BuyController::class, 'show']);
 
 require __DIR__.'/auth.php';

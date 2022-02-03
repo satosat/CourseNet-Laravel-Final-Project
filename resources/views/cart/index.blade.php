@@ -33,12 +33,12 @@
         </div>
     @endforeach
 
-    <form action="/rent/store" id="rentForm" method="POST">
+    <form action="/rent/show" id="rentForm" method="POST">
         @csrf
         <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
     </form>
 
-    <form action="/buy/store" id="buyForm" method="POST">
+    <form action="/buy/show" id="buyForm" method="POST">
         @csrf
         <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
     </form>
