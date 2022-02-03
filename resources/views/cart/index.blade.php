@@ -9,7 +9,7 @@
     @endif
 
     @foreach ($carts as $cart)
-        <div class="row g-2">
+        <div class="row g-2 d-flex justify-content-center">
             <div class="col-6 p-2">
                 <div class="p-3 border bg-light card">
                     <a href="/book/{{ $cart->book_id }}">
@@ -19,12 +19,12 @@
                 </div>
                 <div class="d-flex justify-content-evenly">
                     @if ($cart->book->bookdetails->rent_stock)
-                        <button class="btn btn-primary">Rent Book</button>
+                        <button class="btn btn-primary" id="rentBtn">Rent Book</button>
                     @else
                         <button class="btn btn-primary" disabled>Rent stock not available</button>
                     @endif
                     @if ($cart->book->bookdetails->buy_stock)
-                        <button class="btn btn-success">Buy Book</button>
+                        <button class="btn btn-success" id="buyBtn">Buy Book</button>
                     @else
                         <button class="btn btn-success" disabled>Buy stock not available</button>
                     @endif
@@ -32,6 +32,16 @@
             </div>
         </div>
     @endforeach
+
+    <form action="/rent/store" id="rentForm" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
+    </form>
+
+    <form action="/buy/store" id="buyForm" method="POST">
+        @csrf
+        <input type="hidden" name="book_id" value="{{ $cart->book->id }}">
+    </form>
 
     <style>
         .card {
@@ -51,5 +61,26 @@
             text-decoration: underline;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rentBtn = document.getElementById('rentBtn')
+            const buyBtn = document.getElementById('buyBtn')
+
+            const rentForm = document.getElementById('rentForm')
+            const buyForm = document.getElementById('buyForm')
+
+            // Submit rent form on click
+            rentBtn.addEventListener('click', () => {
+                console.log('click')
+                rentForm.submit()
+            })
+
+            // Submit buy form on click
+            buyBtn.addEventListener('click', () => {
+                buyForm.submit
+            })
+        })
+    </script>
 
 @endsection
