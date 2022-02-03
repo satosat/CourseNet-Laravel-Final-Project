@@ -52,4 +52,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+    // Many-to-Many relationship with Books for BookUser model
+    public function books()
+    {
+        return $this->belongsToMany(Book::class)->withPivot('rent_date', 'return_date', 'created_at');
+    }
 }

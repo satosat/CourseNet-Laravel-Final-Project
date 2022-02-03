@@ -39,6 +39,12 @@ class Book extends Model
         return $this->hasOne(BookDetail::class);
     }
 
+    // Define Many-to-Many relationship with User on BookUser model
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('rent_date', 'return_date', 'created_at');
+    }
+
     // Scope function to get book search results
     public function scopeTitle($q)
     {
