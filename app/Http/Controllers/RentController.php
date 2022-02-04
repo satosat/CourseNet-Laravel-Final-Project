@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\BookDetail;
+use App\Models\BookUser;
 use App\Models\Cart;
 use App\Models\Detail;
 use App\Models\Transaction;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RentController extends Controller
 {
@@ -53,6 +56,16 @@ class RentController extends Controller
             ['book_id', '=', $request->book_id],
             ['user_id', '=' , Auth::id()],
         ])->delete();
+
+        $currentDate = new DateTime(date("Y-m-d H:i:s"));
+        $returnDate = date_add($currentDate, date_interval_create_from_date_string("7 days"));
+
+        DB::table('book_user')->insert([
+            'user_id' => Auth::id(),
+            'book_id' => $request->book_id,
+            'rent_date' => $currentDate,
+            'return_date' => $returnDate,
+        ]);
 
         return redirect('/rent/success');
     }

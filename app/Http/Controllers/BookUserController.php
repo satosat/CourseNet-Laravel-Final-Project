@@ -17,13 +17,11 @@ class BookUserController extends Controller
 
     public function index()
     {
-        $histories = BookUser::where('user_id', Auth::id())->get();
-
-        dd($histories);
+        $user = User::find(Auth::id());
 
         return view('history.index', [
             'title' => 'History',
-            'histories' => $histories,
+            'user' => $user
         ]);
     }
 }
