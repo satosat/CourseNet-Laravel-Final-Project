@@ -15,8 +15,9 @@
                             {{ $book->title }} <br>
                             {{ $book->author }} <br>
                         </a>
-                        Rented date: {{ $book->pivot->rent_date }} <br>
-                        Return date: {{ $book->pivot->return_date }} <br>
+                        Rented date: {{ date('d F Y', strtotime($book->pivot->rent_date)) }} <br>
+                        Return date: {{ date('d F Y', strtotime($book->pivot->return_date)) }} <br>
+                        {{-- Return date: {{ date_format($book->pivot->return_date, "d F Y") }} <br> --}}
                     </div>
                 </div>
             </div>

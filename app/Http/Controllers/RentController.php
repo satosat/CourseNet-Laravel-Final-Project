@@ -63,7 +63,7 @@ class RentController extends Controller
         DB::table('book_user')->insert([
             'user_id' => Auth::id(),
             'book_id' => $request->book_id,
-            'rent_date' => $currentDate,
+            'rent_date' => new DateTime(date("Y-m-d H:i:s")),
             'return_date' => $returnDate,
         ]);
 

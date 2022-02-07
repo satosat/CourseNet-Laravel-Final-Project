@@ -48,6 +48,12 @@
     </div>
 </nav>
 
+<style>
+    .nav-link:hover {
+        cursor: pointer;
+    }
+</style>
+
 <script>
     /*
     *

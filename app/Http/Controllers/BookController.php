@@ -65,12 +65,6 @@ class BookController extends Controller
         ]);
     }
 
-    public function search()
-    {
-        dd(request('search'));
-    }
-
-
     public function edit($id)
     {
         //
