@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <h1 class="display-6 text-center">Cart</h1>
+
     @if (!count($carts))
         <div class="row text-center">
             <h2 class="display-6">You don't have anything on your cart yet</h2>

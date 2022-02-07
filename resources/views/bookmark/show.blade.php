@@ -3,7 +3,12 @@
 @section('content')
 
     <div class="container">
-        <h1>My Bookmarks</h1>
+        <h1 class="display-6 text-center">My Bookmarks</h1>
+
+        @if (!count($bookmarks))
+            <h2 class="display-6 text-center">You have no bookmark yet</h2>
+        @endif
+
         <div class="row g-2">
             @foreach ($bookmarks as $bookmark)
                 <div class="col-3">

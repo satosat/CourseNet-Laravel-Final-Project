@@ -5,7 +5,7 @@
     <h2 class="display-6 text-center">Rent History</h2>
 
     @if(!count($user->books))
-        <h2 class="display-6">You have no rent history yet</h2>
+        <h2 class="display-6 text-center">You have no rent history yet</h2>
     @else
         @foreach ($user->books as $book)
             <div class="row g-2 d-flex justify-content-center">
